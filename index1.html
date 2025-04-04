@@ -1,35 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>FLORES</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Página de Flores Animadas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background-color: #ffe4e1;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .mensaje {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #6a1b9a;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      background: rgba(255, 255, 255, 0.6);
+      padding: 20px 40px;
+      border-radius: 20px;
+      z-index: 1;
+    }
+
+    /* Contenedor de la imagen de tulipanes */
+    .imagen-tulipanes {
+      position: relative;
+      width: 60%;  /* Reduje el tamaño de la imagen */
+      max-width: 400px; /* Asegura que no sea demasiado grande */
+      height: auto;
+      z-index: 0;
+    }
+
+    .imagen-tulipanes img {
+      width: 100%;
+      height: auto;
+      object-fit: cover; /* Asegura que la imagen no se deforme */
+      border-radius: 15px; /* Agrega bordes redondeados */
+    }
+
+    .flor {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('gato1.jpeg'); /* Imagen de gato */
+      background-size: cover;
+      opacity: 0.8;
+      animation: flotar linear infinite;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="greetings">
+  <!-- Reproductor de música -->
+  <audio autoplay loop>
+    <source src="Encantas.mp3" type="audio/mpeg"> <!-- Aquí colocas la ruta del archivo de audio -->
+    Tu navegador no soporta la etiqueta de audio.
+  </audio>
 
-        <span>N</span>
-        <span>I</span>
-        <span>C</span>
-        <span>O</span>
-        <span></span>
-        <span><</span>
-        <span>3</span>
-    </div>
+  <!-- Contenedor de la imagen de los tulipanes -->
+  <div class="imagen-tulipanes">
+    <img src="tulipanes.jpeg" alt="Tulipanes"> <!-- Aquí colocas la imagen de los tulipanes -->
+  </div>
 
-    <div class="description">
-        <span>dale click, o bueno precionalo xD
-            
-        </span>
-    </div>
-    <div class="button">
-        <button>
-            <a href="index.html"> <3</a>
-        </button>
-        
-    </div>
+  <!-- Mensaje de bienvenida -->
+  <div class="mensaje">🌸 Ehmm, no se que poner pero bueno no me estes troste sip <3🌸</div>
+
+  <script>
+    const totalFlores = 30;
+
+    for (let i = 0; i < totalFlores; i++) {
+      const flor = document.createElement('div');
+      flor.classList.add('flor');
+      flor.style.left = Math.random() * 100 + "vw";
+      flor.style.bottom = -Math.random() * 100 + "px";
+      flor.style.animationDuration = (5 + Math.random() * 5) + "s";
+      flor.style.width = flor.style.height = (20 + Math.random() * 20) + "px";
+      document.body.appendChild(flor);
+    }
+  </script>
 </body>
 </html>
